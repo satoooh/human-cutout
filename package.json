@@ -1,0 +1,57 @@
+{
+  "name": "human-cutout",
+  "version": "1.0.0",
+  "description": "AI-powered background removal for images and videos",
+  "type": "module",
+  "bin": {
+    "human-cutout": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/cli.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "background-removal",
+    "image-processing",
+    "video-processing",
+    "transparent",
+    "cutout",
+    "ai",
+    "cli"
+  ],
+  "author": "satoooh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satoooh/human-cutout.git"
+  },
+  "homepage": "https://github.com/satoooh/human-cutout#readme",
+  "bugs": {
+    "url": "https://github.com/satoooh/human-cutout/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@imgly/background-removal-node": "^1.4.5",
+    "commander": "^12.1.0",
+    "ora": "^8.1.1",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

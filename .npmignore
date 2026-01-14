@@ -1,0 +1,13 @@
+src/
+node_modules/
+*.ts
+!*.d.ts
+tsconfig.json
+tsup.config.ts
+.git/
+.github/
+input/
+output/
+tmp/
+.DS_Store
+*.log
