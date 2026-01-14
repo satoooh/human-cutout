@@ -1,6 +1,6 @@
 {
   "name": "human-cutout",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "AI-powered background removal for images and videos",
   "type": "module",
   "bin": {

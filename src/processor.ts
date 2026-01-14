@@ -1,9 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 import { removeBackground } from "@imgly/background-removal-node";
 import sharp from "sharp";
 import ora from "ora";
 import { extractFrames, createVideo, getVideoInfo } from "./ffmpeg.js";
+
+// @imgly/background-removal-nodeのリソースパスを解決
+const require = createRequire(import.meta.url);
+const imglyPath = path.dirname(require.resolve("@imgly/background-removal-node"));
+const publicPath = `file://${imglyPath}/`;
 
 const VIDEO_EXTENSIONS = new Set([
   ".mp4",
@@ -59,7 +66,9 @@ async function removeBackgroundFromImage(
   // ファイルURLとして渡す（Node.js環境で安定）
   const fileUrl = `file://${inputPath}`;
 
-  const resultBlob = await removeBackground(fileUrl);
+  const resultBlob = await removeBackground(fileUrl, {
+    publicPath,
+  });
   const arrayBuffer = await resultBlob.arrayBuffer();
   const resultBuffer = Buffer.from(arrayBuffer);
 
