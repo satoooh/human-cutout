@@ -56,10 +56,10 @@ async function removeBackgroundFromImage(
   inputPath: string,
   outputPath: string
 ): Promise<void> {
-  const inputBuffer = fs.readFileSync(inputPath);
-  const blob = new Blob([inputBuffer]);
+  // ファイルURLとして渡す（Node.js環境で安定）
+  const fileUrl = `file://${inputPath}`;
 
-  const resultBlob = await removeBackground(blob);
+  const resultBlob = await removeBackground(fileUrl);
   const arrayBuffer = await resultBlob.arrayBuffer();
   const resultBuffer = Buffer.from(arrayBuffer);
 
