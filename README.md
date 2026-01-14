@@ -10,30 +10,26 @@
 ## インストール & 実行
 
 ```bash
-# npxで直接実行（インストール不要）
-npx human-cutout -i ./input -o ./output
-
-# またはグローバルインストール
-npm install -g human-cutout
-human-cutout -i ./input -o ./output
+# GitHubから直接実行（インストール不要）
+npx github:satoooh/human-cutout -i ./input -o ./output
 ```
 
 ## 使い方
 
 ```bash
 # 基本: input/ フォルダ内のファイルを一括処理
-npx human-cutout
+npx github:satoooh/human-cutout
 
 # 単一ファイルを処理
-npx human-cutout -i photo.jpg
-npx human-cutout -i video.mp4
+npx github:satoooh/human-cutout -i photo.jpg
+npx github:satoooh/human-cutout -i video.mp4
 
 # 入出力フォルダを指定
-npx human-cutout -i ./my_files -o ./results
+npx github:satoooh/human-cutout -i ./my_files -o ./results
 
 # 動画の出力形式を指定（デフォルト: webm）
-npx human-cutout -i video.mp4 -f mov   # ProRes 4444
-npx human-cutout -i video.mp4 -f gif   # 透過GIF
+npx github:satoooh/human-cutout -i video.mp4 -f mov   # ProRes 4444
+npx github:satoooh/human-cutout -i video.mp4 -f gif   # 透過GIF
 ```
 
 ## オプション
@@ -66,23 +62,13 @@ npm run build
 npm run dev -- -i ./input -o ./output
 ```
 
-## フォルダ構成
-
-```
-human-cutout/
-├── src/
-│   ├── cli.ts        # CLIエントリーポイント
-│   ├── processor.ts  # メイン処理ロジック
-│   └── ffmpeg.ts     # FFmpeg操作
-├── input/            # 入力ファイルを配置
-├── output/           # 処理結果の出力先
-├── package.json
-└── README.md
-```
-
 ## 技術スタック
 
 - **@imgly/background-removal-node** - AI背景除去（ONNX Runtime）
 - **sharp** - 画像処理
-- **fluent-ffmpeg** - 動画処理
-- **TypeScript**
+- **FFmpeg** - 動画処理
+- **TypeScript** + **tsup**
+
+## License
+
+MIT
